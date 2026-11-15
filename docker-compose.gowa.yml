@@ -1,0 +1,24 @@
+# ============================================================================
+# WABlast Pro — GOWA (go-whatsapp-web-multidevice) Docker Compose
+# Deploy on cheap VPS / Mini PC / Cloud Server for 24/7 WhatsApp Gateway
+# ============================================================================
+
+version: '3.8'
+
+services:
+  gowa:
+    image: aldinokemal2104/go-whatsapp-web-multidevice:latest
+    container_name: wablast_pro_gowa
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./gowa_storages:/app/storages
+    environment:
+      - APP_PORT=3000
+      - APP_DEBUG=false
+      - APP_OS=WABlastPro
+      - APP_BASIC_AUTH=admin:rahasia_wablast_pro
+      # URL Webhook Supabase Edge Function (ganti <PROJECT_REF> dengan project ID Supabase Anda)
+      - WHATSAPP_WEBHOOK=https://<PROJECT_REF>.supabase.co/functions/v1/gowa-webhook
+      - WHATSAPP_WEBHOOK_SECRET=rahasia_webhook_wablast
