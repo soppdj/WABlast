@@ -2,7 +2,6 @@ import { useState, type FormEvent } from 'react';
 import { Navigate } from 'react-router-dom';
 import {
   Loader2,
-  AlertTriangle,
   Lock,
   User,
   Eye,
@@ -13,7 +12,7 @@ import {
 import { useAuth } from '../context/AuthContext';
 import { isDemo } from '../lib/supabase';
 
-const DEMO_EMAIL = 'admin@wablast.demo';
+const DEMO_EMAIL = 'admin@wablast.ykr';
 const DEMO_PASS = 'demo1234';
 
 export default function LoginPage() {
@@ -43,12 +42,6 @@ export default function LoginPage() {
     } finally {
       setSubmitting(false);
     }
-  }
-
-  function handleFillDemo() {
-    setUsernameOrEmail(DEMO_EMAIL);
-    setPassword(DEMO_PASS);
-    setError('');
   }
 
   return (
@@ -91,14 +84,18 @@ export default function LoginPage() {
                 <span>WELCOME TO WABLAST</span>
               </div>
 
-              {/* Header Lembaga dengan Font Lebih Besar dan Pemenggalan Baris yang Tepat */}
-              <div className="space-y-2">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[46px] font-black tracking-tight text-[#0F172A] leading-tight">
-                  <span className="block">YAYASAN KHOIRUR ROOZIQIIN</span>
-                  <span className="block text-emerald-800">BANDUNG</span>
+              {/* Header Lembaga: YAYASAN KHOIRUR ROOZIQIIN Satu Baris Utuh */}
+              <div className="space-y-1">
+                <h1 className="leading-tight">
+                  <span className="block text-2xl sm:text-3xl md:text-3xl lg:text-[32px] xl:text-[38px] font-black tracking-tight text-[#0F172A] whitespace-nowrap">
+                    YAYASAN KHOIRUR ROOZIQIIN
+                  </span>
+                  <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[36px] xl:text-[44px] font-black tracking-tight text-emerald-800">
+                    BANDUNG
+                  </span>
                 </h1>
                 {/* Slogan / Tagline Cetak Miring dengan Titik di Akhir */}
-                <p className="text-lg sm:text-xl lg:text-2xl font-semibold italic text-emerald-700">
+                <p className="text-lg sm:text-xl lg:text-2xl font-semibold italic text-emerald-700 pt-1">
                   &ldquo;Menebar kebaikan dalam satu klikan.&rdquo;
                 </p>
               </div>
@@ -108,29 +105,9 @@ export default function LoginPage() {
               </p>
             </div>
 
-            {/* RIGHT COLUMN: LOGIN UI CARD (Samakan dengan Desain Dashboard) */}
+            {/* RIGHT COLUMN: LOGIN UI CARD (Bersih & Sesuai Desain Dashboard) */}
             <div className="lg:col-span-5">
               <div className="mx-auto w-full max-w-md">
-                {/* Demo Mode Notice Banner */}
-                {isDemo && (
-                  <div className="mb-3 flex items-center justify-between gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-2.5 text-xs text-amber-900 shadow-2xs">
-                    <div className="flex items-center gap-2">
-                      <AlertTriangle className="h-4 w-4 shrink-0 text-amber-600" />
-                      <div>
-                        <p className="font-bold">Mode Demo Aktif</p>
-                        <p className="text-[11px] text-amber-700">Gunakan akun demo untuk masuk</p>
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={handleFillDemo}
-                      className="rounded-lg bg-amber-600 px-2.5 py-1 text-xs font-bold text-white hover:bg-amber-700 transition cursor-pointer"
-                    >
-                      Isi Demo
-                    </button>
-                  </div>
-                )}
-
                 {/* Login Card */}
                 <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs">
                   <div className="mb-5 space-y-1">
@@ -167,7 +144,7 @@ export default function LoginPage() {
                           required
                           autoComplete="username"
                           className="w-full rounded-xl border border-slate-300 pl-9 pr-3.5 py-2 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20"
-                          placeholder="admin@wablast.demo"
+                          placeholder="admin@wablast.ykr"
                         />
                       </div>
                     </div>
@@ -211,7 +188,7 @@ export default function LoginPage() {
                       </div>
                     )}
 
-                    {/* Submit Button — Samakan dengan Tombol Hijau Dashboard */}
+                    {/* Submit Button */}
                     <button
                       type="submit"
                       disabled={submitting}
@@ -227,16 +204,6 @@ export default function LoginPage() {
                       )}
                     </button>
                   </form>
-
-                  {/* Demo Helper */}
-                  {isDemo && (
-                    <div className="mt-3.5 rounded-xl border border-slate-100 bg-slate-50 p-2.5 text-center">
-                      <p className="text-[11px] text-slate-500">
-                        Akun Demo: <strong className="text-slate-700">admin@wablast.demo</strong> •{' '}
-                        <strong className="text-slate-700">demo1234</strong>
-                      </p>
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
@@ -247,7 +214,7 @@ export default function LoginPage() {
       {/* FOOTER SESUAI PERMINTAAN USER */}
       <footer className="w-full border-t border-slate-200 bg-white py-3 text-center shrink-0">
         <p className="text-xs font-medium text-slate-500">
-          WABlast Yayasan Khoirur Rooziqiin . Powered by FateherLab . 2026
+          WABlast Yayasan Khoirur Rooziqiin . Powered by FateherLab © 2026
         </p>
       </footer>
     </div>

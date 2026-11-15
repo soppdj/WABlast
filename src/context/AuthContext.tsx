@@ -22,9 +22,9 @@ const DEMO_USER: User = {
   id: 'demo-admin-00000000-0000-0000-0000-000000000000',
   aud: 'authenticated',
   role: 'authenticated',
-  email: 'admin@wablast.demo',
+  email: 'admin@wablast.ykr',
   app_metadata: { provider: 'email' },
-  user_metadata: { full_name: 'Admin Demo' },
+  user_metadata: { full_name: 'Admin Yayasan Khoirur Rooziqiin' },
   created_at: new Date().toISOString(),
 } as User;
 

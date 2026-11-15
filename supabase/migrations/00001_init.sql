@@ -1,7 +1,7 @@
 -- ============================================================================
 -- WABlast Pro — Supabase PostgreSQL Schema Migration (Lengkap & Siap Pakai)
 -- Yayasan Khoirur Rooziqiin Bandung
--- Powered by FateherLab . 2026
+-- Powered by FateherLab © 2026
 -- ============================================================================
 -- Petunjuk:
 -- 1. Buka Supabase Dashboard (https://supabase.com/dashboard) -> Pilih Project Anda.

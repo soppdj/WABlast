@@ -1,8 +1,8 @@
 # MASTER PROMPT: WABlast Pro — Otomasi Broadcast & Penjadwalan WhatsApp Multi-Device
 
-> **Versi Dokumen:** 2.1 (Terbaru - 15 November 2026)  
+> **Versi Dokumen:** 2.2 (Terbaru - 15 November 2026)  
 > **Lembaga:** Yayasan Khoirur Rooziqiin Bandung  
-> **Pengembang:** Powered by FateherLab . 2026  
+> **Pengembang:** Powered by FateherLab © 2026  
 > **Tagline:** *"Menebar kebaikan dalam satu klikan."*  
 > **Repositori Resmi:** [https://github.com/soppdj/WABlast](https://github.com/soppdj/WABlast)
 
@@ -79,21 +79,19 @@ Halaman `/devices` mengelola 3 nomor WhatsApp pengirim:
 - **Skema Warna Serasi dengan Dashboard:** Background `#F8FAFC`, Teks Utama `#0F172A`, Aksen Hijau `#059669`.
 - **Kolom Kiri (Welcoming & Identitas Lembaga):**
   - Badge: **`WELCOME TO WABLAST`** (dengan icon sparkle hijau).
-  - Nama Lembaga (Format 2 baris tegas dan proporsional):
-    ```text
-    YAYASAN KHOIRUR ROOZIQIIN
-    BANDUNG
-    ```
+  - Nama Lembaga:
+    - Baris 1 (Utuh satu baris tanpa terpotong): **`YAYASAN KHOIRUR ROOZIQIIN`**
+    - Baris 2: **`BANDUNG`**
   - Slogan / Tagline (Cetak miring dengan titik):  
     *“Menebar kebaikan dalam satu klikan.”*
   - Deskripsi singkat tujuan aplikasi.
 - **Kolom Kanan (Formulir Login):**
-  - Kotak login bersih dengan ikon User & Password.
-  - Tombol cepat **"Isi Demo"** untuk pengujian instan (`admin@wablast.demo` / `demo1234`).
+  - Kotak login bersih dengan ikon User & Password (tanpa banner demo yang mengganggu).
+  - Placeholder / default admin: `admin@wablast.ykr`.
   - Tombol utama: Hijau zamrud `bg-emerald-600 hover:bg-emerald-700`.
 - **Footer Resmi di Bawah Layar:**
   ```text
-  WABlast Yayasan Khoirur Rooziqiin . Powered by FateherLab . 2026
+  WABlast Yayasan Khoirur Rooziqiin . Powered by FateherLab © 2026
   ```
 
 ### 2. Dashboard (`/dashboard`)
@@ -284,3 +282,4 @@ Demi menjaga keamanan privasi akun donatur dan integritas kredensial lembaga, at
 | **v1.0** | 12 Nov 2026 | Inisialisasi arsitektur WABlast Pro, Supabase schema, integrasi GOWA REST API, dan 5 modul antarmuka utama. |
 | **v2.0** | 14 Nov 2026 | Desain ulang halaman Welcoming & Login 1 layar penuh, penyesuaian 7 kategori donatur di `/donors`, penambahan Admin PIC pada setiap nomor di `/devices`, penyediaan GOWA native Windows (`gowa.exe`) tanpa Docker. |
 | **v2.1** | 15 Nov 2026 | Perbaikan tipografi & pemenggalan nama yayasan per baris, penghapusan animasi tengah sesuai sketsa revisi, penguatan `.gitignore` untuk mencegah kebocoran file sesi WhatsApp, dan penerbitan Master Prompt resmi. |
+| **v2.2** | 15 Nov 2026 | Penyesuaian nama `YAYASAN KHOIRUR ROOZIQIIN` satu baris utuh, pembersihan banner demo & catatan akun, standarisasi username `admin@wablast.ykr`, pembaharuan footer dengan simbol `© 2026`, dan sinkronisasi otomatis ke GitHub. |
