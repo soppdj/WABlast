@@ -11,6 +11,7 @@ export type DonorSegment =
   | 'wakaf'
   | 'wakaf_infaq'
   | 'sedekah_subuh'
+  | 'wali_asuh'
   | 'donatur_baru'
   | 'umum';
 export type DeviceStatus = 'connected' | 'disconnected' | 'qr_ready';
@@ -27,6 +28,7 @@ export const SEGMENT_LABELS: Record<DonorSegment, string> = {
   wakaf: 'Wakaf',
   wakaf_infaq: 'Wakaf & Infaq',
   sedekah_subuh: 'Sedekah Subuh',
+  wali_asuh: 'Wali Asuh',
   donatur_baru: 'Donatur Baru',
   umum: 'Umum',
 };
@@ -37,6 +39,7 @@ export const SEGMENT_COLORS: Record<DonorSegment, string> = {
   wakaf: 'bg-blue-100 text-blue-800',
   wakaf_infaq: 'bg-blue-100 text-blue-800',
   sedekah_subuh: 'bg-amber-100 text-amber-800',
+  wali_asuh: 'bg-teal-100 text-teal-800',
   donatur_baru: 'bg-rose-100 text-rose-800',
   umum: 'bg-gray-100 text-gray-800',
 };

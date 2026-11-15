@@ -30,6 +30,7 @@ DO $$ BEGIN
         'wakaf',
         'wakaf_infaq',
         'sedekah_subuh',
+        'wali_asuh',
         'donatur_baru',
         'umum'
     );
@@ -117,6 +118,7 @@ VALUES
     ('Ayah', 'Usman Hakim', '6281234500006', 'sedekah_subuh', TRUE, 'Sedekah subuh harian aktif'),
     ('Bunda', 'Aisyah Putri', '6281234500007', 'sedekah_subuh', TRUE, 'Rutinitas subuh bersama keluarga'),
     ('Bunda', 'Dewi Lestari', '6281234500008', 'donatur_baru', TRUE, 'Mendaftar via landing page'),
+    ('Bunda', 'Hj. Endang Rahayu', '6281234500010', 'wali_asuh', TRUE, 'Orang tua asuh 2 santri yatim'),
     ('Ayah', 'Budi Santoso', '6281234500009', 'umum', TRUE, 'Program santunan dhuafa berkala')
 ON CONFLICT (whatsapp_number) DO NOTHING;
 
@@ -254,6 +256,7 @@ BEGIN
         WHEN 'wakaf' THEN 'Wakaf'
         WHEN 'wakaf_infaq' THEN 'Wakaf & Infaq'
         WHEN 'sedekah_subuh' THEN 'Sedekah Subuh'
+        WHEN 'wali_asuh' THEN 'Wali Asuh'
         WHEN 'donatur_baru' THEN 'Donatur Baru'
         ELSE 'Program Kebaikan'
     END;

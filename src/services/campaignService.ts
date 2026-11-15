@@ -84,13 +84,38 @@ export async function upsertDevice(device: Partial<WaDevice> & { id?: string }):
 
 // ─── Donors ─────────────────────────────────────────────────────────────────
 
+const DONORS_STORAGE_KEY = 'wablast_donors_v1';
+
+function getStoredDonors(): Donor[] {
+  try {
+    const raw = localStorage.getItem(DONORS_STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.error('Failed to read donors from localStorage', err);
+  }
+  return [...mockDonors];
+}
+
+function setStoredDonors(list: Donor[]): void {
+  try {
+    localStorage.setItem(DONORS_STORAGE_KEY, JSON.stringify(list));
+  } catch (err) {
+    console.error('Failed to write donors to localStorage', err);
+  }
+}
+
 export async function getDonors(filters?: {
   segment?: DonorSegment;
   is_active?: boolean;
   search?: string;
 }): Promise<Donor[]> {
   if (isDemo) {
-    let result = [...mockDonors];
+    let result = getStoredDonors();
     if (filters?.segment) result = result.filter((d) => d.segment === filters.segment);
     if (filters?.is_active !== undefined) result = result.filter((d) => d.is_active === filters.is_active);
     if (filters?.search) {
@@ -113,7 +138,7 @@ export async function getDonors(filters?: {
 }
 
 export async function getDonorCount(segment: DonorSegment): Promise<number> {
-  if (isDemo) return mockDonors.filter((d) => d.segment === segment && d.is_active).length;
+  if (isDemo) return getStoredDonors().filter((d) => d.segment === segment && d.is_active).length;
   const { count, error } = await supabase
     .from('donors')
     .select('*', { count: 'exact', head: true })
@@ -125,7 +150,21 @@ export async function getDonorCount(segment: DonorSegment): Promise<number> {
 
 export async function createDonor(donor: Omit<Donor, 'id' | 'created_at' | 'updated_at' | 'last_contacted_at'>): Promise<Donor> {
   const normalized = { ...donor, whatsapp_number: normalizePhoneNumber(donor.whatsapp_number) };
-  if (isDemo) return { ...normalized, id: crypto.randomUUID(), created_at: new Date().toISOString(), updated_at: new Date().toISOString(), last_contacted_at: null } as Donor;
+  if (isDemo) {
+    const newDonor: Donor = {
+      ...normalized,
+      id: crypto.randomUUID(),
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      last_contacted_at: null,
+    };
+    const current = getStoredDonors();
+    const updated = [newDonor, ...current];
+    setStoredDonors(updated);
+    mockDonors.length = 0;
+    mockDonors.push(...updated);
+    return newDonor;
+  }
   const { data, error } = await supabase.from('donors').insert(normalized).select().single();
   if (error) throw error;
   return data as Donor;
@@ -136,9 +175,19 @@ export async function updateDonor(id: string, updates: Partial<Donor>): Promise<
     updates.whatsapp_number = normalizePhoneNumber(updates.whatsapp_number);
   }
   if (isDemo) {
-    const existing = mockDonors.find((d) => d.id === id);
-    if (!existing) throw new Error('Donor not found');
-    return { ...existing, ...updates };
+    const current = getStoredDonors();
+    const idx = current.findIndex((d) => d.id === id);
+    if (idx === -1) throw new Error('Donor not found');
+    const updatedItem: Donor = {
+      ...current[idx],
+      ...updates,
+      updated_at: new Date().toISOString(),
+    };
+    current[idx] = updatedItem;
+    setStoredDonors(current);
+    mockDonors.length = 0;
+    mockDonors.push(...current);
+    return updatedItem;
   }
   const { data, error } = await supabase
     .from('donors')
@@ -151,7 +200,14 @@ export async function updateDonor(id: string, updates: Partial<Donor>): Promise<
 }
 
 export async function deleteDonor(id: string): Promise<void> {
-  if (isDemo) return;
+  if (isDemo) {
+    const current = getStoredDonors();
+    const filtered = current.filter((d) => d.id !== id);
+    setStoredDonors(filtered);
+    mockDonors.length = 0;
+    mockDonors.push(...filtered);
+    return;
+  }
   const { error } = await supabase.from('donors').delete().eq('id', id);
   if (error) throw error;
 }
@@ -243,6 +299,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     wakaf: 0,
     wakaf_infaq: 0,
     sedekah_subuh: 0,
+    wali_asuh: 0,
     donatur_baru: 0,
     umum: 0,
   };

@@ -17,6 +17,7 @@ const SEGMENTS: DonorSegment[] = [
   'zakat',
   'wakaf',
   'sedekah_subuh',
+  'wali_asuh',
   'donatur_baru',
   'umum',
 ];

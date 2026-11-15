@@ -7,18 +7,14 @@ import {
   Eye,
   EyeOff,
   Radio,
-  Sparkles,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { isDemo } from '../lib/supabase';
-
-const DEMO_EMAIL = 'admin@wablast.ykr';
-const DEMO_PASS = 'demo1234';
 
 export default function LoginPage() {
   const { user, loading, signIn } = useAuth();
-  const [usernameOrEmail, setUsernameOrEmail] = useState(isDemo ? DEMO_EMAIL : '');
-  const [password, setPassword] = useState(isDemo ? DEMO_PASS : '');
+  // Sembunyikan username dan password secara default (tidak diisi otomatis)
+  const [usernameOrEmail, setUsernameOrEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -46,7 +42,7 @@ export default function LoginPage() {
 
   return (
     <div className="h-screen max-h-screen w-full bg-[#F8FAFC] flex flex-col justify-between overflow-hidden">
-      {/* Top Header Bar — Samakan dengan Desain Dashboard */}
+      {/* Top Header Bar — Bersih tanpa status multi-device di kanan */}
       <header className="w-full border-b border-slate-200 bg-white px-6 py-3.5 shrink-0">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-3">
@@ -62,13 +58,6 @@ export default function LoginPage() {
               </span>
             </div>
           </div>
-
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              Sistem Multi-Device Online
-            </span>
-          </div>
         </div>
       </header>
 
@@ -76,26 +65,30 @@ export default function LoginPage() {
       <main className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-4 overflow-hidden">
         <div className="mx-auto w-full max-w-6xl">
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-            {/* LEFT COLUMN: WELCOMING SECTION (Sesuai Permintaan User) */}
-            <div className="space-y-5 text-center lg:col-span-7 lg:text-left">
-              {/* Badge Sambutan */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-emerald-800 shadow-2xs">
-                <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
-                <span>WELCOME TO WABLAST</span>
+            {/* LEFT COLUMN: WELCOMING SECTION (Sesuai Sketsa User) */}
+            <div className="space-y-4 text-center lg:col-span-7 lg:text-left">
+              {/* WELCOME TO & WABLAST PRO (Ukuran proporsional sesuai nama yayasan) */}
+              <div className="space-y-1">
+                <span className="text-sm sm:text-base font-extrabold uppercase tracking-widest text-emerald-700 block">
+                  WELCOME TO
+                </span>
+                <h2 className="text-3xl sm:text-4xl lg:text-[36px] xl:text-[42px] font-black tracking-tight text-[#0F172A] leading-tight">
+                  WABLAST <span className="text-emerald-600">PRO</span>
+                </h2>
               </div>
 
               {/* Header Lembaga: YAYASAN KHOIRUR ROOZIQIIN Satu Baris Utuh */}
-              <div className="space-y-1">
+              <div className="space-y-1 pt-1">
                 <h1 className="leading-tight">
-                  <span className="block text-2xl sm:text-3xl md:text-3xl lg:text-[32px] xl:text-[38px] font-black tracking-tight text-[#0F172A] whitespace-nowrap">
+                  <span className="block text-2xl sm:text-3xl md:text-3xl lg:text-[30px] xl:text-[36px] font-black tracking-tight text-[#0F172A] whitespace-nowrap">
                     YAYASAN KHOIRUR ROOZIQIIN
                   </span>
-                  <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[36px] xl:text-[44px] font-black tracking-tight text-emerald-800">
+                  <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[34px] xl:text-[40px] font-black tracking-tight text-emerald-800">
                     BANDUNG
                   </span>
                 </h1>
                 {/* Slogan / Tagline Cetak Miring dengan Titik di Akhir */}
-                <p className="text-lg sm:text-xl lg:text-2xl font-semibold italic text-emerald-700 pt-1">
+                <p className="text-base sm:text-lg lg:text-xl font-semibold italic text-emerald-700 pt-1">
                   &ldquo;Menebar kebaikan dalam satu klikan.&rdquo;
                 </p>
               </div>
@@ -124,7 +117,7 @@ export default function LoginPage() {
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-3.5">
-                    {/* Username Field */}
+                    {/* Username Field — Kosong / Disembunyikan secara default */}
                     <div>
                       <label
                         htmlFor="username"
@@ -149,7 +142,7 @@ export default function LoginPage() {
                       </div>
                     </div>
 
-                    {/* Password Field */}
+                    {/* Password Field — Kosong / Disembunyikan secara default */}
                     <div>
                       <label
                         htmlFor="password"

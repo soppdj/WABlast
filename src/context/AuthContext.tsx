@@ -81,6 +81,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signIn = useCallback(async (email: string, password: string) => {
     if (isDemo) {
+      const validEmail = email.trim().toLowerCase();
+      const isValidUser =
+        validEmail === 'admin@wablast.ykr' ||
+        validEmail === 'admin' ||
+        validEmail === 'admin@wablast.demo' ||
+        validEmail.includes('admin');
+      const isValidPass = password === 'Admin1@ykr' || password === 'demo1234';
+
+      if (!isValidUser || !isValidPass) {
+        throw new Error('Username atau password tidak sesuai. Pastikan password adalah "Admin1@ykr".');
+      }
+
       localStorage.setItem('wablast_demo_auth', 'true');
       setUser(DEMO_USER);
       return;

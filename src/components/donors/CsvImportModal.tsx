@@ -68,6 +68,7 @@ function resolveSegment(val: string): DonorSegment {
   if (lower.includes('wakaf')) return 'wakaf';
   if (lower.includes('infaq')) return 'wakaf_infaq';
   if (lower.includes('subuh') || lower.includes('sedekah')) return 'sedekah_subuh';
+  if (lower.includes('asuh') || lower.includes('wali')) return 'wali_asuh';
   if (lower.includes('baru')) return 'donatur_baru';
   if (
     lower === 'donatur_tetap' ||
@@ -75,6 +76,7 @@ function resolveSegment(val: string): DonorSegment {
     lower === 'wakaf' ||
     lower === 'wakaf_infaq' ||
     lower === 'sedekah_subuh' ||
+    lower === 'wali_asuh' ||
     lower === 'donatur_baru' ||
     lower === 'umum'
   )

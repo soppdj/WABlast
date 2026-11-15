@@ -15,8 +15,8 @@ Aplikasi web modern (*Single-Page Application*) untuk mengelola pengumuman resmi
    - Tampilan bersih tanpa scroll (`h-screen overflow-hidden`) serasi dengan tema dashboard.
    - Sambutan resmi lembaga *"WELCOME TO WABLAST"* dan *"YAYASAN KHOIRUR ROOZIQIIN BANDUNG"*.
    - Tombol cepat **"Isi Demo"** untuk pengujian langsung (`admin@wablast.demo` / `demo1234`).
-2. **7 Kategori Segmen Donatur:**
-   - Ringkasan metrik donatur di `/donors`: Total Donatur, Donatur Tetap, Zakat, Wakaf, Sedekah Subuh, Donatur Baru, dan Aktif Broadcast.
+2. **8 Kategori Segmen Donatur:**
+   - Ringkasan metrik donatur di `/donors`: Total Donatur, Donatur Tetap, Zakat, Wakaf, Sedekah Subuh, Wali Asuh, Donatur Baru, dan Aktif Broadcast.
 3. **Manajemen 3 Nomor & PIC Admin:**
    - Label header Admin pada setiap nomor: `Admin 1: [Nama]`, `Admin 2: [Nama]`, `Admin 3: [Nama]`.
    - Input PIC Admin yang dapat diedit langsung per perangkat.

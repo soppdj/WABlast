@@ -1,6 +1,6 @@
 # MASTER PROMPT: WABlast Pro — Otomasi Broadcast & Penjadwalan WhatsApp Multi-Device
 
-> **Versi Dokumen:** 2.2 (Terbaru - 15 November 2026)  
+> **Versi Dokumen:** 2.4 (Terbaru - 15 November 2026)  
 > **Lembaga:** Yayasan Khoirur Rooziqiin Bandung  
 > **Pengembang:** Powered by FateherLab © 2026  
 > **Tagline:** *"Menebar kebaikan dalam satu klikan."*  
@@ -32,15 +32,16 @@ Aplikasi ini mengintegrasikan **3 nomor WhatsApp pengirim** yang dikunci berdasa
 
 ## 2. Aturan Bisnis Utama (Core Business Rules)
 
-### A. Kategori Segmen Donatur (7 Kategori Resmi)
-Tabel donatur dan kartu statistik ringkasan di halaman `/donors` wajib menampilkan 7 metrik berikut:
+### A. Kategori Segmen Donatur (8 Kategori Resmi)
+Tabel donatur dan kartu statistik ringkasan di halaman `/donors` wajib menampilkan 8 metrik berikut:
 1. **Total Donatur** (Semua kontak aktif)
 2. **Donatur Tetap** (`donatur_tetap`)
 3. **Zakat** (`zakat`)
 4. **Wakaf** (`wakaf`)
 5. **Sedekah Subuh** (`sedekah_subuh`)
-6. **Donatur Baru** (`donatur_baru`)
-7. **Aktif Broadcast** (Kontak berstatus aktif)
+6. **Wali Asuh** (`wali_asuh` - Orang tua asuh santri yatim)
+7. **Donatur Baru** (`donatur_baru`)
+8. **Aktif Broadcast** (Kontak berstatus aktif)
 
 ### B. Standardisasi Sapaan & Variabel Personalisasi
 Setiap donatur disapa dengan panggilan takzim:
@@ -77,8 +78,10 @@ Halaman `/devices` mengelola 3 nomor WhatsApp pengirim:
 ### 1. Halaman Welcoming & Login (`/login`)
 - **Tampilan 1 Layar Penuh Tanpa Scroll** (`h-screen overflow-hidden`).
 - **Skema Warna Serasi dengan Dashboard:** Background `#F8FAFC`, Teks Utama `#0F172A`, Aksen Hijau `#059669`.
+- **Top Header Bar:** Bersih dan elegan (tanpa label status perangkat di pojok kanan atas).
 - **Kolom Kiri (Welcoming & Identitas Lembaga):**
-  - Badge: **`WELCOME TO WABLAST`** (dengan icon sparkle hijau).
+  - Teks Pengantar: **`WELCOME TO`** (huruf kapital tebal).
+  - Nama Aplikasi: **`WABLAST PRO`** (ukuran besar proporsional setara dengan nama yayasan).
   - Nama Lembaga:
     - Baris 1 (Utuh satu baris tanpa terpotong): **`YAYASAN KHOIRUR ROOZIQIIN`**
     - Baris 2: **`BANDUNG`**
@@ -86,8 +89,9 @@ Halaman `/devices` mengelola 3 nomor WhatsApp pengirim:
     *“Menebar kebaikan dalam satu klikan.”*
   - Deskripsi singkat tujuan aplikasi.
 - **Kolom Kanan (Formulir Login):**
-  - Kotak login bersih dengan ikon User & Password (tanpa banner demo yang mengganggu).
-  - Placeholder / default admin: `admin@wablast.ykr`.
+  - Kotak login bersih dengan ikon User & Password.
+  - Nilai username dan password disembunyikan/dikosongkan secara default saat form pertama dibuka.
+  - Akun login admin demo: Username `admin@wablast.ykr` dan Password **`Admin1@ykr`**.
   - Tombol utama: Hijau zamrud `bg-emerald-600 hover:bg-emerald-700`.
 - **Footer Resmi di Bawah Layar:**
   ```text
@@ -142,6 +146,7 @@ CREATE TYPE public.donor_segment AS ENUM (
     'wakaf',
     'wakaf_infaq',
     'sedekah_subuh',
+    'wali_asuh',
     'donatur_baru',
     'umum'
 );
@@ -283,3 +288,5 @@ Demi menjaga keamanan privasi akun donatur dan integritas kredensial lembaga, at
 | **v2.0** | 14 Nov 2026 | Desain ulang halaman Welcoming & Login 1 layar penuh, penyesuaian 7 kategori donatur di `/donors`, penambahan Admin PIC pada setiap nomor di `/devices`, penyediaan GOWA native Windows (`gowa.exe`) tanpa Docker. |
 | **v2.1** | 15 Nov 2026 | Perbaikan tipografi & pemenggalan nama yayasan per baris, penghapusan animasi tengah sesuai sketsa revisi, penguatan `.gitignore` untuk mencegah kebocoran file sesi WhatsApp, dan penerbitan Master Prompt resmi. |
 | **v2.2** | 15 Nov 2026 | Penyesuaian nama `YAYASAN KHOIRUR ROOZIQIIN` satu baris utuh, pembersihan banner demo & catatan akun, standarisasi username `admin@wablast.ykr`, pembaharuan footer dengan simbol `© 2026`, dan sinkronisasi otomatis ke GitHub. |
+| **v2.3** | 15 Nov 2026 | Perombakan header sambutan menjadi `WELCOME TO` + `WABLAST PRO` berukuran setara nama yayasan, penghapusan status online di pojok kanan atas, penyembunyian default isi username & password di form, serta pengubahan password admin menjadi `Admin1@ykr`. |
+| **v2.4** | 15 Nov 2026 | Penambahan kategori program donatur "Wali Asuh" (total 8 kotak metrik), perbaikan persistensi CRUD donatur (tambah/edit/hapus langsung tersimpan dan terupdate di tampilan), serta sinkronisasi skema SQL Supabase. |

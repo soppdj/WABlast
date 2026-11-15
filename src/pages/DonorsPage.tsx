@@ -85,9 +85,10 @@ export default function DonorsPage() {
     const zakat = donors.filter((d) => d.segment === 'zakat').length;
     const wakaf = donors.filter((d) => d.segment === 'wakaf' || d.segment === 'wakaf_infaq').length;
     const subuh = donors.filter((d) => d.segment === 'sedekah_subuh').length;
+    const waliAsuh = donors.filter((d) => d.segment === 'wali_asuh').length;
     const baru = donors.filter((d) => d.segment === 'donatur_baru').length;
     const active = donors.filter((d) => d.is_active).length;
-    return { total, tetap, zakat, wakaf, subuh, baru, active };
+    return { total, tetap, zakat, wakaf, subuh, waliAsuh, baru, active };
   }, [donors]);
 
   const handleOpenAdd = () => {
@@ -147,8 +148,8 @@ export default function DonorsPage() {
         </div>
       </div>
 
-      {/* Segment Summary Badges (7 Kategori Sesuai Permintaan) */}
-      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 lg:grid-cols-7">
+      {/* Segment Summary Badges (8 Kategori Termasuk Wali Asuh) */}
+      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 lg:grid-cols-8">
         <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-xs">
           <p className="text-[11px] font-medium text-slate-500">Total Donatur</p>
           <p className="mt-1 text-xl font-bold text-slate-900">{stats.total}</p>
@@ -169,13 +170,17 @@ export default function DonorsPage() {
           <p className="text-[11px] font-medium text-amber-700">Sedekah Subuh</p>
           <p className="mt-1 text-xl font-bold text-amber-800">{stats.subuh}</p>
         </div>
+        <div className="rounded-xl border border-teal-200 bg-teal-50/50 p-3 shadow-xs">
+          <p className="text-[11px] font-medium text-teal-700">Wali Asuh</p>
+          <p className="mt-1 text-xl font-bold text-teal-800">{stats.waliAsuh}</p>
+        </div>
         <div className="rounded-xl border border-rose-200 bg-rose-50/50 p-3 shadow-xs">
           <p className="text-[11px] font-medium text-rose-700">Donatur Baru</p>
           <p className="mt-1 text-xl font-bold text-rose-800">{stats.baru}</p>
         </div>
-        <div className="rounded-xl border border-teal-200 bg-teal-50/50 p-3 shadow-xs">
-          <p className="text-[11px] font-medium text-teal-700">Aktif Broadcast</p>
-          <p className="mt-1 text-xl font-bold text-teal-800">{stats.active}</p>
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-3 shadow-xs">
+          <p className="text-[11px] font-medium text-emerald-700">Aktif Broadcast</p>
+          <p className="mt-1 text-xl font-bold text-emerald-800">{stats.active}</p>
         </div>
       </div>
 
@@ -207,6 +212,7 @@ export default function DonorsPage() {
                 <option value="zakat">Zakat</option>
                 <option value="wakaf">Wakaf</option>
                 <option value="sedekah_subuh">Sedekah Subuh</option>
+                <option value="wali_asuh">Wali Asuh</option>
                 <option value="donatur_baru">Donatur Baru</option>
                 <option value="umum">Umum</option>
               </select>
@@ -390,10 +396,14 @@ export default function DonorsPage() {
       {/* Modals */}
       <DonorFormModal
         isOpen={isFormModalOpen}
-        onClose={() => setIsFormModalOpen(false)}
-        onSaved={() => {
+        onClose={() => {
           setIsFormModalOpen(false);
-          fetchDonors();
+          setEditingDonor(null);
+        }}
+        onSaved={async () => {
+          setIsFormModalOpen(false);
+          setEditingDonor(null);
+          await fetchDonors();
         }}
         donor={editingDonor}
       />
@@ -401,9 +411,9 @@ export default function DonorsPage() {
       <CsvImportModal
         isOpen={isCsvModalOpen}
         onClose={() => setIsCsvModalOpen(false)}
-        onImported={() => {
+        onImported={async () => {
           setIsCsvModalOpen(false);
-          fetchDonors();
+          await fetchDonors();
         }}
         existingNumbers={existingNumbers}
       />

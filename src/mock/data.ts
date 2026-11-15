@@ -76,6 +76,7 @@ export const mockDonors: Donor[] = [
   { id: 'd7', salutation: 'Ayah', full_name: 'Ibrahim Hasan', whatsapp_number: '6281234500007', segment: 'donatur_baru', is_active: true, notes: 'Baru mendaftar lewat website', last_contacted_at: new Date().toISOString(), created_at: '2024-01-01T00:00:00Z', updated_at: new Date().toISOString() },
   { id: 'd8', salutation: 'Bunda', full_name: 'Khadijah Nur', whatsapp_number: '6281234500008', segment: 'zakat', is_active: true, notes: 'Zakat fitrah & infaq', last_contacted_at: null, created_at: '2023-08-01T00:00:00Z', updated_at: new Date().toISOString() },
   { id: 'd9', salutation: 'Ayah', full_name: 'Salman Al-Farisi', whatsapp_number: '6281234500009', segment: 'donatur_baru', is_active: false, notes: 'Non-aktif sementara', last_contacted_at: null, created_at: '2024-02-01T00:00:00Z', updated_at: new Date().toISOString() },
+  { id: 'd10', salutation: 'Bunda', full_name: 'Hj. Endang Rahayu', whatsapp_number: '6281234500010', segment: 'wali_asuh', is_active: true, notes: 'Orang tua asuh 2 santri yatim', last_contacted_at: new Date().toISOString(), created_at: '2024-03-01T00:00:00Z', updated_at: new Date().toISOString() },
 ];
 
 export const mockTemplates: MessageTemplate[] = [
@@ -148,13 +149,14 @@ export const mockReplies: IncomingReplyLog[] = [
 ];
 
 export const mockDashboardStats: DashboardStats = {
-  totalDonorsActive: 8,
+  totalDonorsActive: 9,
   donorsBySegment: {
     donatur_tetap: 2,
     zakat: 2,
     wakaf: 1,
     wakaf_infaq: 0,
     sedekah_subuh: 2,
+    wali_asuh: 1,
     donatur_baru: 1,
     umum: 0,
   },
