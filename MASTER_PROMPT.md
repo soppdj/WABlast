@@ -1,6 +1,6 @@
 # MASTER PROMPT: WABlast Pro — Otomasi Broadcast & Penjadwalan WhatsApp Multi-Device
 
-> **Versi Dokumen:** 2.5 (Terbaru - 19 November 2026)  
+> **Versi Dokumen:** 2.6 (Terbaru - 19 November 2026)  
 > **Lembaga:** Yayasan Khoirur Rooziqiin Bandung  
 > **Pengembang:** Powered by FatherLab © 2026  
 > **Tagline:** *"Menebar kebaikan dalam satu klikan."*  
@@ -106,17 +106,17 @@ Halaman `/devices` mengelola 3 nomor WhatsApp pengirim:
 ### 3. Manajemen Perangkat (`/devices`)
 - 3 Kartu perangkat WhatsApp dengan label Admin PIC (`Admin 1: ...`, `Admin 2: ...`, `Admin 3: ...`).
 - Tombol Scan QR Code (terhubung ke endpoint GOWA `/app/login`) dan tombol Tes Kirim Pesan.
-- Input editable untuk Label Nomor, Nomor HP, Device ID, Kunci Segmen, dan Nama PIC Admin.
+- Input editable untuk Label Nomor, Nomor HP, Device ID, Kunci Segmen (termasuk opsi Donatur Tetap, Zakat, Wakaf, Wakaf & Infaq, Sedekah Subuh, **Wali Asuh**, Donatur Baru, Umum), dan Nama PIC Admin.
 
 ### 4. Database Donatur (`/donors`)
-- 7 Kartu statistik segmen di bagian atas.
+- 8 Kartu statistik segmen di bagian atas (Total Donatur, Donatur Tetap, Zakat, Wakaf, Sedekah Subuh, Wali Asuh, Donatur Baru, Aktif Broadcast).
 - Pencarian multi-parameter (nama, nomor WA, catatan).
-- Filter segmen (Donatur Tetap, Zakat, Wakaf, Sedekah Subuh, Donatur Baru, Umum) & filter sapaan (Ayah/Bunda).
-- Modal Tambah/Edit Donatur dengan normalisasi otomatis format nomor `628...`.
+- Filter segmen (Semua Segmen, Donatur Tetap, Zakat, Wakaf, Sedekah Subuh, Wali Asuh, Donatur Baru, Umum) & filter sapaan (Ayah/Bunda).
+- Modal Tambah/Edit Donatur dengan normalisasi otomatis format nomor `628...` dan opsi segmen Wali Asuh.
 - Modal Import CSV dengan pemetaan kolom otomatis.
 
 ### 5. Buat Broadcast & Jadwal (`/campaigns/new` & `/campaigns`)
-- Kunci segmen otomatis ke nomor pengirim terkait.
+- Pilihan segmen target lengkap (Sedekah Subuh, Donatur Tetap, Wakaf & Infaq, **Wali Asuh**, Zakat, Wakaf, Donatur Baru, Umum) yang otomatis terkunci (*segment-locked*) ke nomor pengirim perangkat terkait.
 - Editor pesan dengan chip variabel dinamis (`+ {{salam}}`, `+ {{sapaan}}`, `+ {{nama}}`, `+ {{segmen}}`).
 - Pengaturan jeda acak anti-blokir (Min 10s - Max 25s) dengan kalkulator estimasi total durasi.
 - Pilihan mode: Kirim Sekarang, Jadwal Sekali Jalan, atau Jadwal Berulang (Daily/Weekly/Monthly).
@@ -291,3 +291,4 @@ Demi menjaga keamanan privasi akun donatur dan integritas kredensial lembaga, at
 | **v2.3** | 15 Nov 2026 | Perombakan header sambutan menjadi `WELCOME TO` + `WABLAST PRO` berukuran setara nama yayasan, penghapusan status online di pojok kanan atas, penyembunyian default isi username & password di form, serta pengubahan password admin menjadi `Admin1@ykr`. |
 | **v2.4** | 15 Nov 2026 | Penambahan kategori program donatur "Wali Asuh" (total 8 kotak metrik), perbaikan persistensi CRUD donatur (tambah/edit/hapus langsung tersimpan dan terupdate di tampilan), serta sinkronisasi skema SQL Supabase. |
 | **v2.5** | 19 Nov 2026 | Koreksi tipografi nama pengembang pada footer dan metadata dokumen menjadi "FatherLab", serta sinkronisasi repositori GitHub. |
+| **v2.6** | 19 Nov 2026 | Penambahan opsi segmen "Wali Asuh" pada dropdown Segmen Terkunci perangkat di halaman `/devices` (`DeviceCard.tsx`) dan pilihan target segmen pada pembuatan broadcast di `/campaigns/new` (`NewCampaignPage.tsx`). |

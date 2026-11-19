@@ -16,6 +16,7 @@ const SEGMENT_OPTIONS: { value: DonorSegment; label: string }[] = [
   { value: 'wakaf', label: 'Wakaf' },
   { value: 'wakaf_infaq', label: 'Wakaf & Infaq' },
   { value: 'sedekah_subuh', label: 'Sedekah Subuh' },
+  { value: 'wali_asuh', label: 'Wali Asuh' },
   { value: 'donatur_baru', label: 'Donatur Baru' },
   { value: 'umum', label: 'Umum' },
 ];

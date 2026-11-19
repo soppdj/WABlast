@@ -281,6 +281,10 @@ export default function NewCampaignPage() {
                 <option value="sedekah_subuh">Sedekah Subuh (Pengingat Harian Subuh)</option>
                 <option value="donatur_tetap">Donatur Tetap (Laporan & Sapaan Rutin)</option>
                 <option value="wakaf_infaq">Wakaf & Infaq (Program Pembangunan)</option>
+                <option value="wali_asuh">Wali Asuh (Program Orang Tua Asuh Yatim)</option>
+                <option value="zakat">Zakat (Program Penyaluran Zakat)</option>
+                <option value="wakaf">Wakaf (Program Wakaf Produktif & Sarana)</option>
+                <option value="donatur_baru">Donatur Baru (Penyambutan Donatur Baru)</option>
                 <option value="umum">Umum (Donatur Publik)</option>
               </select>
             </div>
