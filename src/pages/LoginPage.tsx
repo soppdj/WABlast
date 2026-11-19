@@ -207,7 +207,7 @@ export default function LoginPage() {
       {/* FOOTER SESUAI PERMINTAAN USER */}
       <footer className="w-full border-t border-slate-200 bg-white py-3 text-center shrink-0">
         <p className="text-xs font-medium text-slate-500">
-          WABlast Yayasan Khoirur Rooziqiin . Powered by FateherLab © 2026
+          WABlast Yayasan Khoirur Rooziqiin . Powered by FatherLab © 2026
         </p>
       </footer>
     </div>

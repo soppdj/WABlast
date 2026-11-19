@@ -1,8 +1,8 @@
 # MASTER PROMPT: WABlast Pro — Otomasi Broadcast & Penjadwalan WhatsApp Multi-Device
 
-> **Versi Dokumen:** 2.4 (Terbaru - 15 November 2026)  
+> **Versi Dokumen:** 2.5 (Terbaru - 19 November 2026)  
 > **Lembaga:** Yayasan Khoirur Rooziqiin Bandung  
-> **Pengembang:** Powered by FateherLab © 2026  
+> **Pengembang:** Powered by FatherLab © 2026  
 > **Tagline:** *"Menebar kebaikan dalam satu klikan."*  
 > **Repositori Resmi:** [https://github.com/soppdj/WABlast](https://github.com/soppdj/WABlast)
 
@@ -95,7 +95,7 @@ Halaman `/devices` mengelola 3 nomor WhatsApp pengirim:
   - Tombol utama: Hijau zamrud `bg-emerald-600 hover:bg-emerald-700`.
 - **Footer Resmi di Bawah Layar:**
   ```text
-  WABlast Yayasan Khoirur Rooziqiin . Powered by FateherLab © 2026
+  WABlast Yayasan Khoirur Rooziqiin . Powered by FatherLab © 2026
   ```
 
 ### 2. Dashboard (`/dashboard`)
@@ -290,3 +290,4 @@ Demi menjaga keamanan privasi akun donatur dan integritas kredensial lembaga, at
 | **v2.2** | 15 Nov 2026 | Penyesuaian nama `YAYASAN KHOIRUR ROOZIQIIN` satu baris utuh, pembersihan banner demo & catatan akun, standarisasi username `admin@wablast.ykr`, pembaharuan footer dengan simbol `© 2026`, dan sinkronisasi otomatis ke GitHub. |
 | **v2.3** | 15 Nov 2026 | Perombakan header sambutan menjadi `WELCOME TO` + `WABLAST PRO` berukuran setara nama yayasan, penghapusan status online di pojok kanan atas, penyembunyian default isi username & password di form, serta pengubahan password admin menjadi `Admin1@ykr`. |
 | **v2.4** | 15 Nov 2026 | Penambahan kategori program donatur "Wali Asuh" (total 8 kotak metrik), perbaikan persistensi CRUD donatur (tambah/edit/hapus langsung tersimpan dan terupdate di tampilan), serta sinkronisasi skema SQL Supabase. |
+| **v2.5** | 19 Nov 2026 | Koreksi tipografi nama pengembang pada footer dan metadata dokumen menjadi "FatherLab", serta sinkronisasi repositori GitHub. |

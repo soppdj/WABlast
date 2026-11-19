@@ -2,7 +2,7 @@
 
 > **Lembaga:** Yayasan Khoirur Rooziqiin Bandung  
 > **Tagline:** *"Menebar kebaikan dalam satu klikan."*  
-> **Pengembang:** Powered by FateherLab © 2026  
+> **Pengembang:** Powered by FatherLab © 2026  
 > **Dokumentasi Lengkap:** [MASTER_PROMPT.md](MASTER_PROMPT.md)
 
 Aplikasi web modern (*Single-Page Application*) untuk mengelola pengumuman resmi, laporan program donasi, dan sapaan rutin (seperti pengingat **Sedekah Subuh**) kepada ribuan **Donatur** menggunakan **2–3 nomor WhatsApp pengirim** yang dikunci berdasarkan segmen donatur (*Segment-Locked Multi-Device Routing*) serta dilengkapi fitur **Auto-Forward Balasan Donatur ke 1 Nomor CS Utama**.
@@ -139,4 +139,4 @@ wablast-pro/
 
 ---
 
-*WABlast Pro — Yayasan Khoirur Rooziqiin Bandung . Powered by FateherLab © 2026*
+*WABlast Pro — Yayasan Khoirur Rooziqiin Bandung . Powered by FatherLab © 2026*
